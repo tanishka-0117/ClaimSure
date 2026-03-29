@@ -5,40 +5,42 @@ const AuthContext = createContext();
 const USERS_KEY = 'claimsure.auth.users';
 const SESSION_KEY = 'claimsure.auth.session';
 
+// Demo credentials - DO NOT use real passwords!
+// These are for development only. In production, use proper authentication services.
 const seedUsers = [
   {
     id: 'seed-worker-1',
     name: 'Demo Worker',
     email: 'worker@claimsure.com',
-    password: 'worker123',
+    password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
     role: 'worker',
   },
   {
     id: 'seed-worker-2',
     name: 'Ravi Sharma',
     email: 'ravi@claimsure.com',
-    password: 'worker123',
+    password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
     role: 'worker',
   },
   {
     id: 'seed-worker-3',
     name: 'Priya Nair',
     email: 'priya@claimsure.com',
-    password: 'worker123',
+    password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
     role: 'worker',
   },
   {
     id: 'seed-worker-4',
     name: 'Arjun Singh',
     email: 'arjun@claimsure.com',
-    password: 'worker123',
+    password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
     role: 'worker',
   },
   {
     id: 'seed-admin-1',
     name: 'Demo Admin',
     email: 'admin@claimsure.com',
-    password: 'admin123',
+    password: import.meta.env.VITE_DEMO_ADMIN_PASSWORD || 'changeme',
     role: 'admin',
   },
 ];
