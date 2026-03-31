@@ -20,28 +20,28 @@ const seedUsers = [
     name: 'Ravi Sharma',
     email: 'ravi@claimsure.com',
     password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
-    role: 'worker',
+  role: 'worker',
   },
-  {
-    id: 'seed-worker-3',
+{
+  id: 'seed-worker-3',
     name: 'Priya Nair',
-    email: 'priya@claimsure.com',
-    password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
-    role: 'worker',
+      email: 'priya@claimsure.com',
+        password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
+          role: 'worker',
   },
-  {
-    id: 'seed-worker-4',
+{
+  id: 'seed-worker-4',
     name: 'Arjun Singh',
-    email: 'arjun@claimsure.com',
-    password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
-    role: 'worker',
+      email: 'arjun@claimsure.com',
+        password: import.meta.env.VITE_DEMO_WORKER_PASSWORD || 'changeme',
+          role: 'worker',
   },
-  {
-    id: 'seed-admin-1',
+{
+  id: 'seed-admin-1',
     name: 'Demo Admin',
-    email: 'admin@claimsure.com',
-    password: import.meta.env.VITE_DEMO_ADMIN_PASSWORD || 'changeme',
-    role: 'admin',
+      email: 'admin@claimsure.com',
+        password: import.meta.env.VITE_DEMO_ADMIN_PASSWORD || 'changeme',
+          role: 'admin',
   },
 ];
 
@@ -198,9 +198,9 @@ export const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ 
-      user, 
-      isAuthenticated, 
+    <AuthContext.Provider value={{
+      user,
+      isAuthenticated,
       isLoadingAuth,
       isLoadingPublicSettings,
       authError,
