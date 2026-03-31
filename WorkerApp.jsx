@@ -11,7 +11,7 @@ import LowBatteryGuard from '../components/claimsure/LowBatteryGuard';
 import SmartCoveragePlans from '../components/claimsure/SmartCoveragePlans';
 import WorkerSideNav from '../components/claimsure/WorkerSideNav';
 import AppHeader from '../components/claimsure/AppHeader';
-
+import { useAuth } from '@/lib/AuthContext';
 const CPSShieldGauge = ({ score }) => {
   const radius = 30;
   const circumference = 2 * Math.PI * radius;
@@ -81,6 +81,7 @@ const WeatherEffects = ({ condition }) => {
 };
 
 export default function WorkerApp() {
+  const { user: authUser } = useAuth();
 
   const ACTIVE_WORKER_KEY = 'claimsure.activeWorkerId';
   const [workers, setWorkers] = useState([]);
@@ -161,12 +162,33 @@ export default function WorkerApp() {
     }
 
     setWorkers(existing);
-    if (!selectedWorkerId && existing.length > 0) {
-      const storedWorkerId = localStorage.getItem(ACTIVE_WORKER_KEY);
-      const fallback = String(existing[0].id);
-      const validStored = storedWorkerId && existing.some((w) => String(w.id) === storedWorkerId);
-      const nextId = validStored ? storedWorkerId : fallback;
+    
+    let matchingWorker = authUser ? existing.find(w => w.name.toLowerCase() === authUser.name.toLowerCase()) : null;
+    
+    if (!matchingWorker && authUser) {
+        const newWorkerData = {
+            workerId: `W${Date.now().toString().slice(-4)}`,
+            name: authUser.name,
+            homeCity: 'Delhi',
+            shiftActive: false,
+            lastGPS_lat: 28.6139,
+            lastGPS_lng: 77.2090,
+            lastGPS_city: 'Delhi',
+            lastIP: '127.0.0.1',
+            isMockLocation: false,
+            payoutStatus: 'NONE',
+            payoutAmount: 0,
+            avatar: 'blue',
+        };
+        const createdWorker = await base44.entities.Worker.create(newWorkerData);
+        existing = await base44.entities.Worker.list();
+        setWorkers(existing);
+        matchingWorker = existing.find(w => w.name.toLowerCase() === authUser.name.toLowerCase()) || createdWorker;
+    }
 
+    const nextId = matchingWorker ? String(matchingWorker.id) : (existing.length > 0 ? String(existing[0].id) : null);
+
+    if (nextId) {
       setSelectedWorkerId(nextId);
       setWorker(existing.find((w) => String(w.id) === nextId) || existing[0]);
     }
