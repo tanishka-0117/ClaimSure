@@ -1,0 +1,88 @@
+{
+  "name": "Claim",
+  "type": "object",
+  "properties": {
+    "claimId": {
+      "type": "string",
+      "title": "Claim ID"
+    },
+    "workerId": {
+      "type": "string",
+      "title": "Worker ID"
+    },
+    "workerName": {
+      "type": "string",
+      "title": "Worker Name"
+    },
+    "city": {
+      "type": "string",
+      "title": "City"
+    },
+    "cpsScore": {
+      "type": "number",
+      "title": "CPS Score"
+    },
+    "status": {
+      "type": "string",
+      "title": "Status",
+      "enum": [
+        "AUTO_APPROVED",
+        "SOFT_VERIFY",
+        "FLAGGED",
+        "DENIED"
+      ]
+    },
+    "signal_ipMatch": {
+      "type": "boolean",
+      "title": "IP Match"
+    },
+    "signal_mockLocation": {
+      "type": "boolean",
+      "title": "Mock Location Clean"
+    },
+    "signal_appActivity": {
+      "type": "boolean",
+      "title": "App Activity"
+    },
+    "signal_cityHistory": {
+      "type": "boolean",
+      "title": "City History Match"
+    },
+    "signal_ipScore": {
+      "type": "number",
+      "title": "IP Score"
+    },
+    "signal_mockScore": {
+      "type": "number",
+      "title": "Mock Score"
+    },
+    "signal_activityScore": {
+      "type": "number",
+      "title": "Activity Score"
+    },
+    "signal_cityScore": {
+      "type": "number",
+      "title": "City Score"
+    },
+    "ringAlert": {
+      "type": "boolean",
+      "title": "Ring Alert",
+      "default": false
+    },
+    "weatherCondition": {
+      "type": "string",
+      "title": "Weather Condition"
+    },
+    "payoutAmount": {
+      "type": "number",
+      "title": "Payout Amount"
+    }
+  },
+  "required": [
+    "workerId",
+    "workerName",
+    "city",
+    "cpsScore",
+    "status"
+  ]
+}

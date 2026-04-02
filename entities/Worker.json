@@ -1,0 +1,84 @@
+{
+  "name": "Worker",
+  "type": "object",
+  "properties": {
+    "workerId": {
+      "type": "string",
+      "title": "Worker ID"
+    },
+    "name": {
+      "type": "string",
+      "title": "Name"
+    },
+    "homeCity": {
+      "type": "string",
+      "title": "Home City"
+    },
+    "shiftActive": {
+      "type": "boolean",
+      "title": "Shift Active",
+      "default": false
+    },
+    "lastGPS_lat": {
+      "type": "number",
+      "title": "Last GPS Lat"
+    },
+    "lastGPS_lng": {
+      "type": "number",
+      "title": "Last GPS Lng"
+    },
+    "lastGPS_city": {
+      "type": "string",
+      "title": "Last GPS City"
+    },
+    "lastIP": {
+      "type": "string",
+      "title": "Last IP"
+    },
+    "lastActivity": {
+      "type": "string",
+      "title": "Last Activity",
+      "format": "date-time"
+    },
+    "isMockLocation": {
+      "type": "boolean",
+      "title": "Mock Location",
+      "default": false
+    },
+    "payoutStatus": {
+      "type": "string",
+      "title": "Payout Status",
+      "enum": [
+        "NONE",
+        "PAID",
+        "PENDING"
+      ]
+    },
+    "payoutAmount": {
+      "type": "number",
+      "title": "Payout Amount",
+      "default": 0
+    },
+    "payoutTimestamp": {
+      "type": "string",
+      "title": "Payout Timestamp",
+      "format": "date-time"
+    },
+    "currentWeather": {
+      "type": "string",
+      "title": "Current Weather"
+    },
+    "weatherCode": {
+      "type": "number",
+      "title": "Weather Code"
+    },
+    "avatar": {
+      "type": "string",
+      "title": "Avatar Color"
+    }
+  },
+  "required": [
+    "name",
+    "homeCity"
+  ]
+}
